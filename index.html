@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotAI - Create Your Next Hit</title>
+    <meta name="description"
+        content="AI-powered songwriting assistant. Generate lyrics, styles, and titles optimized for Suno AI with a premium Spotify-like interface.">
+
+    <!-- Fonts - Circular equivalent or close match -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rock+Salt&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons (Phosphor or FontAwesome - using SVG for performance/no-dep) -->
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="nav-list">
+                <div class="nav-item logo-item">
+                    <span class="logo-icon">✨</span>
+                    <a href="#">SpotAI</a>
+                </div>
+                <div class="nav-item active">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path
+                            d="M12.5 3.24l7.47 6.4a2 2 0 01.73 1.51v8.1a2 2 0 01-2 2h-4.5a1 1 0 01-1-1v-4a1 1 0 00-1-1h-2.5a1 1 0 00-1 1v4a1 1 0 01-1 1H4.25a2 2 0 01-2-2v-8.1a2 2 0 01.73-1.51l7.47-6.4a2.03 2.03 0 012.05 0z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item" id="createNavBtn">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 15h-2v-4H7v-2h4V7h2v4h4v2h-4z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Create Song</span>
+                </div>
+                <div class="nav-item">
+                    <svg viewBox="0 0 24 24" class="nav-icon">
+                        <path
+                            d="M3 17h18a1 1 0 01.83 1.55l-3.32 5A1 1 0 0117.67 24H6.33a1 1 0 01-.83-.45l-3.32-5A1 1 0 013 17zM18 10V6a2 2 0 00-2-2H8a2 2 0 00-2 2v4a3 3 0 00-3 3v2h18v-2a3 3 0 00-3-3z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>Your Library</span>
+                </div>
+            </div>
+
+            <div class="playlist-section">
+                <div class="playlist-div">
+                    <span class="section-title">PLAYLISTS</span>
+                    <div class="create-playlist-btn">
+                        <div class="plus-box">+</div>
+                        <span>Create Playlist</span>
+                    </div>
+                </div>
+                <hr class="separator">
+                <div class="scrollable-playlists">
+                    <div class="playlist-item">Example Hits Vol. 1</div>
+                    <div class="playlist-item">Suno Favorites</div>
+                    <div class="playlist-item">Chill Lofi Beats</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-view">
+            <!-- Top Header -->
+            <header class="top-bar">
+                <div class="nav-arrows">
+                    <button class="circle-btn" disabled>
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path
+                                d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z">
+                            </path>
+                        </svg>
+                    </button>
+                    <button class="circle-btn" disabled>
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path
+                                d="M4.97.47a.75.75 0 1 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="user-menu">
+                    <button class="pill-btn dark" style="font-size: 0.875rem;">
+                        Explore Premium
+                    </button>
+                    <button id="settingsBtn" class="circle-btn"
+                        style="background: rgba(0,0,0,0.7); width: auto; padding: 0 12px; border-radius: 500px;"
+                        title="API Settings">
+                        <span
+                            style="font-family: 'Courier New', monospace; font-weight: 900; color: #1ed760; font-size: 14px; letter-spacing: 1px;">API</span>
+                    </button>
+                    <button class="circle-btn" style="background: #535353; padding: 2px;" title="Profile">
+                        <div
+                            style="width: 100%; height: 100%; background: #7c7c7c; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 10px; color: black;">
+                            G</div>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-filters">
+                <button class="filter-pill active">All</button>
+                <button class="filter-pill">Music</button>
+                <button class="filter-pill">Podcasts</button>
+            </div>
+
+            <div class="content-scroll">
+                <!-- Hero / Create Section -->
+                <section class="hero-section" id="createSection">
+                    <div class="hero-content">
+                        <p>PRODUCED BY SPOTAI</p>
+                        <h1>Create Your Hit</h1>
+                        <div class="input-area">
+                            <textarea id="promptInput"
+                                placeholder="Describe the song you want to create... (e.g. 'A rock anthem about Duman')"></textarea>
+                            <button id="generateBtn" class="primary-play-btn">Generate</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Results Section (Hidden by default) -->
+                <section id="resultsArea" class="results-layout hidden">
+                    <h2>Generated Track</h2>
+                    <div class="results-row" style="flex-wrap: wrap;">
+                        <div class="result-box" style="flex: 1 1 100%; margin-bottom: 12px;">
+                            <div class="box-header">
+                                <h3>Title</h3>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="icon-text-btn" id="openSunoBtn"
+                                        style="color: #fff; background: #e91e63;">Create in Suno ↗</button>
+                                    <button class="icon-text-btn" id="copyTitle">Copy</button>
+                                </div>
+                            </div>
+                            <div class="box-content code-style" id="titleOutput"
+                                style="font-size: 1.2rem; font-weight: bold; min-height: auto;"></div>
+                        </div>
+                        <div class="result-box">
+                            <div class="box-header">
+                                <h3>Style</h3>
+                                <button class="icon-text-btn" id="copyStyle">Copy</button>
+                            </div>
+                            <div class="box-content code-style" id="styleOutput"></div>
+                        </div>
+                        <div class="result-box">
+                            <div class="box-header">
+                                <h3>Lyrics</h3>
+                                <button class="icon-text-btn" id="copyLyrics">Copy</button>
+                            </div>
+                            <div class="box-content lyrics-scroll" id="lyricsOutput"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Example Songs Section -->
+                <section class="examples-section">
+                    <div class="section-header">
+                        <h2>Featured Examples</h2>
+                        <a href="#">Show all</a>
+                    </div>
+
+                    <div class="cards-grid" id="examplesGrid">
+                        <!-- Example Cards -->
+                        <div class="song-card" data-song="1">
+                            <div class="card-image">
+                                <div class="img-placeholder"
+                                    style="background: linear-gradient(135deg, #450af5, #c4efd9)"></div>
+                                <button class="play-overlay-btn" title="Play">
+                                    <svg role="img" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="card-text">
+                                <h3>Neon City</h3>
+                                <p>Synthwave • 120 BPM</p>
+                            </div>
+                        </div>
+                        <div class="song-card" data-song="2">
+                            <div class="card-image">
+                                <div class="img-placeholder"
+                                    style="background: linear-gradient(135deg, #ff9a9e, #fad0c4)"></div>
+                                <button class="play-overlay-btn" title="Play">
+                                    <svg role="img" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="card-text">
+                                <h3>Midnight Rain</h3>
+                                <p>Lo-fi Hip Hop</p>
+                            </div>
+                        </div>
+                        <div class="song-card" data-song="3">
+                            <div class="card-image">
+                                <div class="img-placeholder"
+                                    style="background: linear-gradient(135deg, #a18cd1, #fbc2eb)"></div>
+                                <button class="play-overlay-btn" title="Play">
+                                    <svg role="img" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="card-text">
+                                <h3>Cyber Chase</h3>
+                                <p>Electronic • Fast</p>
+                            </div>
+                        </div>
+                        <div class="song-card" data-song="4">
+                            <div class="card-image">
+                                <div class="img-placeholder"
+                                    style="background: linear-gradient(135deg, #84fab0, #8fd3f4)"></div>
+                                <button class="play-overlay-btn" title="Play">
+                                    <svg role="img" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="card-text">
+                                <h3>Acoustic Morning</h3>
+                                <p>Folk • Chill</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="examples-section">
+                    <div class="section-header">
+                        <h2>Recommended for today</h2>
+                        <a href="#">Show all</a>
+                    </div>
+                    <!-- Reuse grid style or add new placeholders if needed. Keeping it simple. -->
+                </section>
+            </div>
+        </main>
+
+        <!-- Player Bar (Preserved) -->
+        <footer class="player-bar">
+            <div class="now-playing">
+                <div class="cover-thumb"></div>
+                <div class="track-info">
+                    <div class="track-name">No Song Playing</div>
+                    <div class="artist-name">Select a track</div>
+                </div>
+                <button class="heart-btn control-icon">
+                    <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M1.69 2A4.582 4.582 0 0 1 8 2.023 4.583 4.583 0 0 1 14.31 2a4.63 4.63 0 0 1 1.69 3.518c.005 3.486-5.882 9.043-7.534 10.482l-.466.405-.467-.405C5.883 14.562-.006 9.005 0 5.518A4.63 4.63 0 0 1 1.69 2z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button class="control-icon shuffle">
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path
+                                d="M13.151.922a.75.75 0 1 0-1.06 1.06L13.109 3H11.16a3.75 3.75 0 0 0-2.873 1.34l-6.173 7.356A2.25 2.25 0 0 1 .39 12.5H0V14h.391a3.75 3.75 0 0 0 2.873-1.34l6.173-7.356a2.25 2.25 0 0 1 1.724-.804h1.947l-1.017 1.018a.75.75 0 0 0 1.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 0 0 .39 3.5z">
+                            </path>
+                        </svg>
+                    </button>
+                    <button class="control-icon prev">
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M13 2.5L5 8l8 5.5V2.5zm-10 0h2v11H3v-11z"></path>
+                        </svg>
+                    </button>
+                    <button class="play-pause-btn" id="mainPlayBtn">
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor"
+                            class="play-icon">
+                            <path
+                                d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z">
+                            </path>
+                        </svg>
+                    </button>
+                    <button class="control-icon next">
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M3 2.5l8 5.5-8 5.5V2.5zm10 0h2v11h-2v-11z"></path>
+                        </svg>
+                    </button>
+                    <button class="control-icon repeat">
+                        <svg role="img" height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path
+                                d="M0 4.75A3.75 3.75 0 0 1 3.75 1h8.5A3.75 3.75 0 0 1 16 4.75v5a3.75 3.75 0 0 1-3.75 3.75H9.81l1.018 1.018a.75.75 0 1 1-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 1 1 1.06 1.06L9.811 12h2.439a2.25 2.25 0 0 0 2.25-2.25v-5a2.25 2.25 0 0 0-2.25-2.25h-8.5A2.25 2.25 0 0 0 1.5 4.75v5A2.25 2.25 0 0 0 3.75 12h5v1.5h-5A3.75 3.75 0 0 1 0 9.75v-5z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="playback-bar">
+                    <span class="time current">0:00</span>
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <span class="time total">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-controls">
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <div id="settingsModal" class="modal-backdrop hidden">
+        <div class="modal">
+            <h2>Gemini API Setup</h2>
+            <div class="input-group">
+                <label>API Key</label>
+                <input type="password" id="apiKeyInput" placeholder="Enter your key here">
+            </div>
+            <div class="modal-actions">
+                <button id="cancelSettings" class="text-btn">Cancel</button>
+                <button id="saveKeyBtn" class="primary-btn">Save Key</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Closed Sign Modal -->
+    <div id="closedSignModal" class="closed-sign-modal">
+        <span class="closed-sign-icon">🚧</span>
+        <p>Kapalıyızzz....</p>
+        <p style="font-size: 0.8rem; font-family: 'Inter', sans-serif; margin-top: 10px; font-weight: bold;">(Henüz
+            yapım aşamasında! 😅)</p>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden">Notification</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
