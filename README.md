@@ -165,15 +165,37 @@ Bu proje, modern web teknolojileri kullanılarak "hafif ve hızlı" olacak şeki
 
 ## 📄 Lisans
 
-Bu proje **GPL-3.0** altında lisanslanmıştır. Açık kaynak kodludur, dilediğiniz gibi kullanabilir, değiştirebilir ve geliştirebilirsiniz.
+Bu proje **GNU General Public License v3.0 (GPL-3.0)** altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+
+GPL-3.0, açık kaynak yazılımlar için en güçlü "copyleft" lisansıdır ve şunları garanti eder:
+- ✅ Kaynak kodunu özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz
+- ✅ Türev çalışmaların da GPL-3.0 ile lisanslanması zorunludur
+- ✅ Patent hakları kullanıcılara açıkça verilir
+
+---
+
+## 👨‍💻 Yapımcı Bilgileri
+
+**A VİBE CODER**
+**İsim**: [Glass]  
+**GitHub**: [@the91455](https://github.com/the91455)  
+**Email**: the91455@tutamail.com
+
+---
+
+## 🙏 Teşekkürler
+
+- [Google Gemini](https://ai.google.dev/) - Güçlü AI modeli için
+- [Spotify](https://spotify.com/) - İlham veren arayüz tasarımı için
+- [Suno AI](https://suno.com/) - Müzik üretim devrimi için
 
 ---
 
 <div align="center">
 
-### ⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!
+### ⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
 
-**Created by [Glass]**
+**Made with ❤️ and 🤖 AI**
 
 [⬆ Başa Dön](#-spotai---ai-songwriting-companion)
 
